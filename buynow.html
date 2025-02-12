@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <link rel="icon" type="image/x-icon" href="auraicon3.png">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ece0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #c25c5c;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        #content {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+        }
+        a {
+            font-size: 15px ;
+            color : white;
+            text-underline-offset: none
+        }
+        ul {
+            list-style-type: none;
+            text-align: center;
+        }
+        ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        ul li a {
+            color:white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        ul li a:hover {
+            text-decoration: underline;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            color: #a64b4b;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        textarea, input[type="radio"] + label {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+        p {
+            font-size: 15px;
+            margin-bottom: 30px;
+            color: #c85c5c;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            background-color: #a64b4b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        input[type="button"]:hover {
+            background-color: #944242;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color:#c85c5c;
+            border: none;
+            color: white;
+            padding: 8px 22px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .center-align {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .center-align label, .center-align input {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <br>
+        <h1>Checkout</h1>
+            <div class="checkoutheader">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a><li>
+            <a href="contactus.html">Contact Us</a>
+            </ul>
+            </div>
+    </header>
+    <br>
+    <div id="content">
+        <form id="checkoutForm">
+            <ol>
+                <li>Name
+                    <textarea id="name" name="name" rows="1" cols="20" required></textarea>
+                    <div class="error" id="nameError"></div>
+                </li>
+                <li>Email
+                    <textarea id="email" name="email" rows="2" cols="30" required></textarea>
+                    <div class="error" id="emailError"></div>
+                </li>
+                <li>Delivery address
+                    <textarea id="address" name="address" rows="5" cols="50" required></textarea>
+                    <div class="error" id="addressError"></div>
+                </li>
+                <li>Select a payment method:
+                    <br>
+                    <input type="radio" id="creditCard" name="paymentMethod" value="Credit or debit card">
+                    <label for="creditCard">Credit or debit card</label><br>
+                    
+                    <input type="radio" id="netBanking" name="paymentMethod" value="Net Banking">
+                    <label for="netBanking">Net Banking</label><br>
+                    
+                    <input type="radio" id="cashOnDelivery" name="paymentMethod" value="Cash on Delivery">
+                    <label for="cashOnDelivery">Cash on Delivery</label><br>
+                    <div class="error" id="paymentMethodError"></div>
+                </li>
+            </ol>
+            <div id="paymentDetails"></div>
+            <br>
+            <button type="submit" value="Use this payment method">Proceed</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('input[name="paymentMethod"]').forEach((elem) => {
+            elem.addEventListener("change", function(event) {
+                const paymentDetails = document.getElementById('paymentDetails');
+                paymentDetails.innerHTML = '';
+
+                if (event.target.value === 'Credit or debit card') {
+                    paymentDetails.innerHTML = `
+                        <div class="center-align">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" required><br>
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" id="expiryDate" name="expiryDate" required><br>
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" required><br>
+                        </div>
+                    `;
+                } else if (event.target.value === 'Net Banking') {
+                    paymentDetails.innerHTML = `
+                        <div class="center-align">
+                        <label for="bankName">Bank Name:</label>
+                        <input type="text" id="bankName" name="bankName" required><br>
+                        <label for="accountNumber">Account Number:</label>
+                        <input type="text" id="accountNumber" name="accountNumber" required><br>
+                        <label for="ifscCode">IFSC Code:</label>
+                        <input type="text" id="ifscCode" name="ifscCode" required><br>
+                        </div>
+                    `;
+                } else if (event.target.value === 'Cash on Delivery') {
+                    paymentDetails.innerHTML = `<p class="center-align">No additional details required for Cash on Delivery.</p>`;
+                }
+            });
+        });
+
+        document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('addressError').textContent = '';
+            document.getElementById('paymentMethodError').textContent = '';
+
+            let isValid = true;
+
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                document.getElementById('nameError').textContent = 'Name is required.';
+                isValid = false;
+            }
+
+            const email = document.getElementById('email').value.trim();
+            if (email === '') {
+                document.getElementById('emailError').textContent = 'Email is required.';
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            const address = document.getElementById('address').value.trim();
+            if (address === '') {
+                document.getElementById('addressError').textContent = 'Delivery address is required.';
+                isValid = false;
+            }
+
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                document.getElementById('paymentMethodError').textContent = 'Please select a payment method.';
+                isValid = false;
+            } else {
+                if (paymentMethod.value === 'Credit or debit card') {
+                    const cardNumber = document.getElementById('cardNumber').value.trim();
+                    const expiryDate = document.getElementById('expiryDate').value.trim();
+                    const cvv = document.getElementById('cvv').value.trim();
+
+                    if (cardNumber === '' || expiryDate === '' || cvv === '') {
+                        document.getElementById('paymentMethodError').textContent = 'All credit card fields are required.';
+                        isValid = false;
+                    }
+                } else if (paymentMethod.value === 'Net Banking') {
+                    const bankName = document.getElementById('bankName').value.trim();
+                    const accountNumber = document.getElementById('accountNumber').value.trim();
+                    const ifscCode = document.getElementById('ifscCode').value.trim();
+
+                    if (bankName === '' || accountNumber === '' || ifscCode === '') {
+                        document.getElementById('paymentMethodError').textContent = 'All net banking fields are required.';
+                        isValid = false;
+                    }
+                }
+            }
+
+            if (isValid) {
+                alert('Order Placed! \n Thank you for shopping with AuraGlow');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+    </script>
+       <p>&copy; Copyright 2024. All Rights Reserved Designed By Digital Wordings.</p>
+</body>
+</html>

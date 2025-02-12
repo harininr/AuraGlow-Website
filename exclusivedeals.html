@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="auraicon3.png">
+    <title>AuraGlow Exclusive Deals</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #a64b4b;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            text-align: center;
+            padding: 0;
+        }
+
+        ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .deals-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        h2 {
+            color: #a64b4b;
+        }
+
+        .deal {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 1 calc(25% - 40px);
+            box-sizing: border-box;
+        }
+
+        .deal h2 {
+            margin-top: 0;
+        }
+
+        .deal img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: rgb(192, 94, 105);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: rgb(192, 94, 105);
+        }
+
+        .details {
+            display: none;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .center-align {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AuraGlow Exclusive Deals</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="deals-container">
+            <div class="deal">
+                <h2>Comprehensive Skincare</h2>
+                <a href="https://example.com/buy-teeth-whitening-kit" target="_blank">
+                    <img src="exclusivedeals1.jpg" alt="Comprehensive Skincare and Lip Care Set" width="300" height="300"><br>
+                </a>
+                <p><b>Rs.999 only</b></p><br>
+                <button onclick="showDetails('deal1')">Show Details</button><br>
+                <div class="details" id="details-deal1">
+                    <p>This limited-time offer bundles 3 moisturizers, 2 face creams, and 1 lip balm for complete hydration. Perfect for all skin types, it's your chance to experience a radiant complexion and dry lips goodbye!</p>
+                </div>
+                <br>
+                <div class="buynow">
+                    <a href="buynow.html"><button type="submit">BUY NOW</button></a>
+                </div>
+            </div>
+            <div class="deal">
+                <h2>Must Need Skincare</h2>
+                <a href="https://example.com/buy-toothpaste" target="_blank">
+                    <img src="exclusivedeals2.jpg" alt="Must Need Skincare" width="300" height="300"><br>
+                </a>
+                <p><b>Rs.499 only</b></p><br>
+                <button onclick="showDetails('deal2')">Show Details</button><br>
+                <div class="details" id="details-deal2">
+                    <p>Upgrade your beauty routine with our exclusive set of skincare essentials, now at a special discount. This luxurious collection features a premium moisturizer, a hydrating lip balm, and a revitalizing serum. Don't miss out on this limited-time offer to enhance your skincare regimen with our top-tier products.</p>
+                </div>
+                <br>
+                <div class="buynow">
+                    <a href="buynow.html"><button type="submit">BUY NOW</button></a>
+                </div>
+            </div>
+            <div class="deal">
+                <h2>Essential Sun & Lip Care Set</h2>
+                <a href="https://example.com/buy-toothpaste" target="_blank">
+                    <img src="exclusivedeals3.jpg" alt="Essential Sun and Lip Care Set" width="300" height="300"><br>
+                </a>
+                <p><b>Rs.699 only</b></p><br>
+                <button onclick="showDetails('deal3')">Show Details</button><br>
+                <div class="details" id="details-deal3">
+                    <p>This essential collection includes a convenient sunscreen stick and two lip balms. Together, these products ensure your skin and lips stay protected, hydrated, and beautifully cared for. Don't miss out on this limited-time offer to enhance your daily skincare routine with our premium products.</p>
+                </div>
+                <br>
+                <div class="buynow">
+                    <a href="buynow.html"><button type="submit">BUY NOW</button></a>
+                </div>
+            </div>
+            <div class="deal">
+                <h2>Mini Travel Skincare Kit</h2>
+                <a href="https://example.com/buy-toothpaste" target="_blank">
+                    <img src="exclusicedeals4.jpg" alt="Mini Travel Skincare Kit" width="300" height="300"><br>
+                </a>
+                <p><b>Rs.999 only</b></p><br>
+                <button onclick="showDetails('deal4')">Show Details</button><br>
+                <div class="details" id="details-deal4">
+                    <p>Discover the perfect companion for your travels with our Mini Travel Skincare Kit, now available at an exclusive discount. Ideal for quick getaways or everyday use, this kit is designed to fit seamlessly into your busy lifestyle. Don't miss out on this limited-time offer to take your skincare routine wherever you go with our top-quality products.</p>
+                </div>
+                <br>
+                <div class="buynow">
+                    <a href="buynow.html"><button type="submit">BUY NOW</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="center-align">&copy; 2024 AuraGlow. All rights reserved.</p>
+    </footer>
+    <script type="text/javascript">
+        function showDetails(dealId) {
+            var detailsDiv = document.getElementById('details-' + dealId);
+            if (detailsDiv.style.display === "none" || detailsDiv.style.display === "") {
+                detailsDiv.style.display = "block";
+            } else {
+                detailsDiv.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
